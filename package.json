@@ -1,0 +1,21 @@
+{
+  "name": "fvm_preentrega",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Pre-entrega para el curso de NodeJS",
+  "homepage": "https://github.com/FMG-12/NodeJS.Pre_entrega#readme",
+  "bugs": {
+    "url": "https://github.com/FMG-12/NodeJS.Pre_entrega/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FMG-12/NodeJS.Pre_entrega.git"
+  },
+  "license": "ISC",
+  "author": "Francisco Valentin Miano",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"working\";",
+    "start": "node index.js"
+  }
+}
