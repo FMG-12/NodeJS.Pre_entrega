@@ -38,8 +38,8 @@ switch(method){
             .catch(error => console.log(error));
         }
         else {
-            console.error("Argumento faltante o no válido.");
-            return;
+            throw new Error("Argumento faltante o no válido.");
+            
         }
 
     break;
@@ -48,8 +48,8 @@ switch(method){
 
             //Primero valido si todos los argumentos que necesito estan completos y son validos, sino informo un error.
             if(route!= "products" || !title || !price || !category){
-                console.error("Argumentos faltantes o no válidos.");
-                return;
+                throw new Error("Argumentos faltantes o no válidos.");
+                
             }
             
             const new_product = new Product(title, price, category);
@@ -68,8 +68,8 @@ switch(method){
 
             //Primero valido si todos los argumentos que necesito estan completos y son validos, sino informo un error.
             if(route!= "products" || isNaN(article)){
-                console.error("Argumentos faltantes o no válidos.");
-                return;
+                throw new Error("Argumentos faltantes o no válidos.");
+                
             }
             
             await fetch(`https://fakestoreapi.com/products/${article}`,{
@@ -79,7 +79,7 @@ switch(method){
             .then(data => console.log(data));
     break;
     default:
-            console.error("La operación no es válida.");
-            return;
+            throw new Error("La operación no es válida.");
+            
     break;
 }
