@@ -19,7 +19,7 @@ switch(method){
     case "GET":
         //si no me consulta por una articulo en especifico le devuelvo todos los productos
         if (route === "products" && !article){
-            fetch('https://fakestoreapi.com/products', {
+            await fetch('https://fakestoreapi.com/products', {
                 method: "GET"
             }
             )
@@ -29,7 +29,7 @@ switch(method){
         }
         //valido si el usuario me está consultando por un producto específico
         else if (route === "products" && !isNaN(article)){   //Con la función isNan verifico si el segundo argumento es un número   
-            fetch(`https://fakestoreapi.com/products/${article}`, {
+            await fetch(`https://fakestoreapi.com/products/${article}`, {
                 method: "GET"
             }
             )
@@ -39,6 +39,7 @@ switch(method){
         }
         else {
             console.error("Argumento faltante o no válido.");
+            return;
         }
 
     break;
@@ -48,11 +49,12 @@ switch(method){
             //Primero valido si todos los argumentos que necesito estan completos y son validos, sino informo un error.
             if(route!= "products" || !title || !price || !category){
                 console.error("Argumentos faltantes o no válidos.");
+                return;
             }
             
             const new_product = new Product(title, price, category);
 
-            fetch("https://fakestoreapi.com/products",{
+            await fetch("https://fakestoreapi.com/products",{
                     method: "POST",
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(new_product)
@@ -67,9 +69,10 @@ switch(method){
             //Primero valido si todos los argumentos que necesito estan completos y son validos, sino informo un error.
             if(route!= "products" || isNaN(article)){
                 console.error("Argumentos faltantes o no válidos.");
+                return;
             }
             
-            fetch(`https://fakestoreapi.com/products/${article}`,{
+            await fetch(`https://fakestoreapi.com/products/${article}`,{
                 method: "DELETE"
             })
             .then(response => response.json())
@@ -77,5 +80,6 @@ switch(method){
     break;
     default:
             console.error("La operación no es válida.");
+            return;
     break;
 }
